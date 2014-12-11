@@ -1,10 +1,13 @@
 #include "serialkmers.h"
 #include <algorithm>
+#include <ctime>
 
 const char * glob_data;
 int K;
 
 Result serial_kmers(const Data& input, int k) {
+	clock_t start = clock();
+
 	const int len = input.get_size();
 	const char * data = input.get_data();
 
@@ -105,13 +108,15 @@ Result serial_kmers(const Data& input, int k) {
 	res[j].count = cnt;
 	j ++;
 
+	float time = (clock() - start) * 1000.0 / CLOCKS_PER_SEC;
+
 	delete pos;
 	delete rk;
 	delete count;
 	delete ident;
 	delete new_pos;
 
-	return Result(j, res);
+	return Result(j, time, res);
 }
 
 bool cmp(int pos1, int pos2) {
@@ -129,6 +134,8 @@ bool equal(int pos1, int pos2) {
 }
 
 Result naive_kmers(const Data& input, int k) {
+	clock_t start = clock();
+
 	int len = input.get_size();
 	glob_data = input.get_data();
 	K = k;
@@ -154,7 +161,10 @@ Result naive_kmers(const Data& input, int k) {
 	}
 	res[j].count = cnt;
 	j ++;
+	
+	float time = (clock() - start) * 1000.0 / CLOCKS_PER_SEC;
+
 	delete pos;
-	return Result(j, res);
+	return Result(j, time, res);
 }
 

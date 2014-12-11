@@ -29,10 +29,11 @@ struct PosCount {
 
 class Result {
 public:
-	Result(int num, PosCount* p) : n(num), pos_count(p) {}
+	Result(int num, float time, PosCount* p) : n(num), time(time), pos_count(p) {}
 
 	Result(int num) : n(num) {
 		this->pos_count = new PosCount[n];
+		this->time = 0;
 	}
 
 	~Result() {
@@ -85,9 +86,14 @@ public:
 		cout << "==================" << endl;
 	}
 
+	float get_time() const {
+		return time;
+	}
+
 private:
 	int n;
 	PosCount* pos_count;
+	float time;
 };
 
 class Data {
