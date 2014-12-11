@@ -58,7 +58,7 @@ void test(int size, int k, ostream& out) {
 }
 
 int main() {
-	ofstream fout("result.txt");
+	ofstream fout("result-new.txt");
 
 	sanity_check(1000, 8);
 
