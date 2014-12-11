@@ -145,8 +145,6 @@ Result parallel_kmers(const Data& input, int k) {
 		thrust::for_each(id.begin(), id.end(), cmp1);
 		update_permutation(id, pos);
 
-		//for(int i=0; i<len && i < 100; ++i) cout << "gpu " << pos[i] << "\t" << rk[i] << endl;
-
 		// Sort pos using rk[pos[i]]
 		thrust::sequence(id.begin(), id.end());
 		thrust::for_each(id.begin(), id.end(), cmp2);

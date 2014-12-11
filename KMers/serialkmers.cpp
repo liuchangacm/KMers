@@ -57,8 +57,6 @@ Result serial_kmers(const Data& input, int k) {
 			new_pos[--count[pos[i] + gap >= len ? 0 : rk[pos[i] + gap] + 1]] = pos[i];
 		}
 		tmp_pos = pos; pos = new_pos; new_pos = tmp_pos;
-				
-		//for(int i=0; i<len && i < 100; ++i) cout << "cpu " << pos[i] << "\t" << rk[i] << endl;
 
 		// Sort pos using rk[pos[i]]
 		memset(count, 0, sizeof(int) * (len + 1));
