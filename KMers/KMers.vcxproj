@@ -150,7 +150,7 @@ copy "$(CudaToolkitBinDir)\cudart*.dll" "$(OutDir)"</Command>
     <CudaCompile Include="parallelkmers.cu" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cu" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="serialkmers.cpp" />
   </ItemGroup>
   <ItemGroup>
