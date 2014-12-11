@@ -115,16 +115,18 @@ Result parallel_kmers(const Data& input, int k) {
 	const int len = input.get_size();
 	const char * data = input.get_data();
 
+
+	// Copy data
+	thrust::host_vector<int> host_data(data, data+len);
+	thrust::device_vector<char> dev_data(len);
+	thrust::copy(host_data.begin(), host_data.end() , dev_data.begin());
+
 	float time;
 	cudaEvent_t start, stop;
 	cudaEventCreate(&start);
 	cudaEventCreate(&stop);
 	cudaEventRecord(start, 0);
 
-	// Copy data
-	thrust::host_vector<int> host_data(data, data+len);
-	thrust::device_vector<char> dev_data(len);
-	thrust::copy(host_data.begin(), host_data.end() , dev_data.begin());
 
 	// Initialize pos & rk
 	thrust::device_vector<int> pos(len);
