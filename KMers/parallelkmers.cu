@@ -181,14 +181,14 @@ Result parallel_kmers(const Data& input, int k) {
 	PosCount* res = new PosCount[len];
 	int cnt = 1;
 	int j = 0;
-	res[0].pos = pos[0];
+	res[0].pos = p_pos[0];
 	for(int i=1; i<len; ++i) {
 		if(p_rk[p_pos[i-1]] == p_rk[p_pos[i]]) {
 			++ cnt;
 		} else {
 			res[j].count = cnt;
 			j ++;
-			res[j].pos = pos[i];
+			res[j].pos = p_pos[i];
 			cnt = 1;
 		}
 	}

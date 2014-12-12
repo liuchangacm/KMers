@@ -65,7 +65,7 @@ int main() {
 	int tot = 0;
 	for(int times = 0; times < 2; ++ times) {
 		for(int lvl = 20; lvl <= 25; ++lvl) {
-			for(int logk = 2; logk < lvl; logk += 6) {
+			for(int logk = 2; logk < lvl && logk < 16; logk += 6) {
 				tot ++;
 			}
 		}
@@ -74,7 +74,7 @@ int main() {
 	int now = 0;
 	for(int times = 0; times < 2; ++ times) {
 		for(int lvl = 20; lvl <= 25; ++lvl) {
-			for(int logk = 2; logk < lvl; logk += 6) {
+			for(int logk = 2; logk < lvl && logk < 16; logk += 6) {
 				cout << (++now) << "/" << tot << " processing..." << endl;
 				test(1 << lvl, 1 << logk, fout);
 			}
